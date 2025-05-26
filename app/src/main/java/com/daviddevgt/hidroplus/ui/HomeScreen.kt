@@ -51,10 +51,18 @@ fun HomeScreen(
     var settings by remember { mutableStateOf(SettingsData(metaDiaria = meta)) }
     val metaActual = settings.metaDiaria
 
-    val logro = engine.desbloquearLogro(vasos, meta)
-    val rango = engine.subirDeNivel(vasos)
-    val grito = engine.gritoDeGuerraDiario(vasos, record, meta)
-    val habilidad = engine.desbloquearHabilidadSecreta(diasConsecutivos)
+    val logro by remember {
+        derivedStateOf { engine.desbloquearLogro(vasos, meta) }
+    }
+    val rango by remember {
+        derivedStateOf { engine.subirDeNivel(vasos) }
+    }
+    val grito by remember {
+        derivedStateOf { engine.gritoDeGuerraDiario(vasos, record, meta) }
+    }
+    val habilidad by remember {
+        derivedStateOf { engine.desbloquearHabilidadSecreta(diasConsecutivos) }
+    }
 
     // Detectar level up
     LaunchedEffect(rango) {
@@ -91,7 +99,9 @@ fun HomeScreen(
         label = "water scale"
     )
 
-    val progress = (vasos.toFloat() / meta.toFloat()).coerceIn(0f, 1f)
+    val progress by remember {
+        derivedStateOf { (vasos.toFloat() / meta.toFloat()).coerceIn(0f, 1f) }
+    }
     val progressColor by animateColorAsState(
         targetValue = when {
             progress >= 1f -> Color(0xFF4CAF50)

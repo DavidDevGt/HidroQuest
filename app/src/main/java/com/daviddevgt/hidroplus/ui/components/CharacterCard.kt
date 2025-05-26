@@ -196,7 +196,6 @@ fun CharacterCard(
             .fillMaxWidth()
             .scale(pulseScale)
             .drawBehind {
-                // Efecto de resplandor sutil en el fondo
                 drawRect(
                     brush = Brush.radialGradient(
                         colors = listOf(
@@ -219,12 +218,10 @@ fun CharacterCard(
             modifier = Modifier.padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Avatar mejorado con efectos
             Box(
                 modifier = Modifier
                     .size(70.dp)
                     .drawBehind {
-                        // Aura del personaje
                         drawCircle(
                             color = progressColor.copy(alpha = 0.3f),
                             radius = 40.dp.toPx(),

@@ -53,7 +53,7 @@ fun AchievementCard(iconRes: Int, text: String) {
     ) {
         Row(
             modifier = Modifier
-                .padding(horizontal = 12.dp, vertical = 10.dp)
+                .padding(horizontal = 12.dp, vertical = 16.dp)
                 .widthIn(max = 240.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
