@@ -7,6 +7,8 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.ui.geometry.Size
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.filled.*
@@ -101,6 +103,9 @@ fun HomeScreen(
         label = "progress color"
     )
 
+    // Estado del scroll
+    val scrollState = rememberScrollState()
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -125,7 +130,9 @@ fun HomeScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .verticalScroll(scrollState)
+                .padding(16.dp)
+                .padding(bottom = 80.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -155,6 +162,7 @@ fun HomeScreen(
             )
 
             WaterGlassProgress(vasos = vasos, meta = meta)
+
             AchievementSection(
                 logro = logro,
                 grito = grito,
@@ -230,7 +238,6 @@ private fun DrawScope.drawRPGPixelSky() {
         radius = 24f,
         center = moonCenter
     )
-    // Cráteres
     listOf(
         Offset(moonCenter.x - 8f, moonCenter.y - 4f) to 2f,
         Offset(moonCenter.x + 6f, moonCenter.y + 8f) to 3f,
