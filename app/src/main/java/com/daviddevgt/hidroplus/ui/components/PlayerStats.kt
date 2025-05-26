@@ -16,8 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-// Asegúrate de tener esta importación si la usas, aunque en el código actual no parece ser necesaria directamente aquí.
-// import androidx.compose.ui.unit.em
 import com.daviddevgt.hidroplus.R
 import com.daviddevgt.hidroplus.ui.theme.RPGGold
 import com.daviddevgt.hidroplus.ui.theme.RPGHudGray
@@ -41,7 +39,7 @@ fun PlayerStats(
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp) // Padding general dentro de la Card
+                .padding(16.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -53,18 +51,14 @@ fun PlayerStats(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Primera fila de estadísticas
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                // MODIFICACIÓN: Reducir el espaciado para dar más ancho a los ítems
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(
                     modifier = Modifier.weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    // MODIFICACIÓN: Pasar el 'rango' completo.
-                    // StatItem se encargará de la elipsis si es necesario.
                     StatItem(R.drawable.pixel_medal, "NIVEL", rango)
                 }
                 Box(
@@ -75,12 +69,10 @@ fun PlayerStats(
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp)) // Espacio entre las dos filas
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Segunda fila de estadísticas
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                // MODIFICACIÓN: Reducir el espaciado para dar más ancho a los ítems
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(
@@ -104,7 +96,7 @@ fun PlayerStats(
 fun StatItem(iconRes: Int, label: String, value: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(horizontal = 2.dp) // Mantenemos un pequeño padding
+        modifier = Modifier.padding(horizontal = 2.dp)
     ) {
         Image(
             painter = painterResource(id = iconRes),
@@ -116,16 +108,16 @@ fun StatItem(iconRes: Int, label: String, value: String) {
             text = label,
             style = MaterialTheme.typography.bodyLarge.copy(fontSize = 10.sp, color = RPGGold),
             textAlign = TextAlign.Center,
-            maxLines = 2, // Permitimos hasta 2 líneas para la etiqueta por si acaso
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )
         Text(
             text = value,
             style = MaterialTheme.typography.bodyLarge.copy(color = RPGGold, fontSize = 12.sp),
             textAlign = TextAlign.Center,
-            maxLines = 2, // El Text se encargará de ajustar a 2 líneas
-            overflow = TextOverflow.Ellipsis, // y aplicar elipsis si el 'value' completo no cabe
-            lineHeight = 14.sp // Puedes ajustar esto o incluso quitarlo para usar el default
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            lineHeight = 14.sp
         )
     }
 }

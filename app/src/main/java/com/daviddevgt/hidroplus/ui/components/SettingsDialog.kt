@@ -151,7 +151,6 @@ fun SettingsDialog(
                             }
                         }
 
-                        // Tabs
                         TabRow(
                             selectedTabIndex = selectedTab,
                             containerColor = Color(0xFF2A2D4D),
@@ -166,19 +165,20 @@ fun SettingsDialog(
                             Tab(
                                 selected = selectedTab == 0,
                                 onClick = { selectedTab = 0 },
-                                text = { Text("General") }
+                                text = { Text("⚙️") }
                             )
                             Tab(
                                 selected = selectedTab == 1,
                                 onClick = { selectedTab = 1 },
-                                text = { Text("Notificaciones") }
+                                text = { Text("🔔") }
                             )
                             Tab(
                                 selected = selectedTab == 2,
                                 onClick = { selectedTab = 2 },
-                                text = { Text("Personalización") }
+                                text = { Text("🎨") }
                             )
                         }
+
 
                         // Contenido con scroll
                         Column(

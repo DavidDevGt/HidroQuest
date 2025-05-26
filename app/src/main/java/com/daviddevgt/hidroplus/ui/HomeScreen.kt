@@ -165,7 +165,7 @@ fun HomeScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(8.dp),
             contentAlignment = Alignment.BottomEnd
         ) {
             RPGSettingsButton(
@@ -193,7 +193,6 @@ fun HomeScreen(
 }
 
 private fun DrawScope.drawRPGPixelSky() {
-    // Fondo nocturno con gradiente más suave
     drawRect(
         brush = Brush.verticalGradient(
             colors = listOf(
@@ -207,11 +206,10 @@ private fun DrawScope.drawRPGPixelSky() {
         size = size
     )
 
-    // Estrellas con patrones de tamaño fijo y posiciones alineadas a píxeles
     val starPattern = listOf(
-        Triple(0.15f, 0.2f, 1),   // Pequeña
-        Triple(0.4f, 0.35f, 2),   // Mediana
-        Triple(0.7f, 0.15f, 3),   // Grande
+        Triple(0.15f, 0.2f, 1),
+        Triple(0.4f, 0.35f, 2),
+        Triple(0.7f, 0.15f, 3),
         Triple(0.85f, 0.45f, 2),
         Triple(0.25f, 0.65f, 1),
         Triple(0.55f, 0.75f, 1),
@@ -226,7 +224,6 @@ private fun DrawScope.drawRPGPixelSky() {
         )
     }
 
-    // Luna con detalles de cráteres pixelados
     val moonCenter = Offset(size.width - 64f, 64f)
     drawCircle(
         color = Color(0xFFF4F1DE),
@@ -246,9 +243,7 @@ private fun DrawScope.drawRPGPixelSky() {
         )
     }
 
-    // Montañas pixeladas en el horizonte
     val mountainColor = Color(0xFF2D3548)
-    // Montaña grande
     drawPath(
         path = Path().apply {
             moveTo(-50f, size.height)
@@ -259,7 +254,6 @@ private fun DrawScope.drawRPGPixelSky() {
         color = mountainColor
     )
 
-    // Montaña mediana (más clara)
     drawPath(
         path = Path().apply {
             moveTo(size.width * 0.4f, size.height)
@@ -270,9 +264,8 @@ private fun DrawScope.drawRPGPixelSky() {
         color = mountainColor.copy(alpha = 0.8f)
     )
 
-    // Nubes estáticas low-poly
     listOf(
-        Triple(0.2f, 0.3f, 3),  // X, Y, tamaño
+        Triple(0.2f, 0.3f, 3),
         Triple(0.5f, 0.4f, 2),
         Triple(0.7f, 0.25f, 4)
     ).forEach { (x, y, s) ->
